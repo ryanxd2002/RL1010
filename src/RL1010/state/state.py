@@ -1,12 +1,8 @@
 # state_encoding.py
 from typing import List, Dict, Any
-from RL1010.src.RL1010.config import BOARD_SIZE, PIECES_IN_HAND, SCORE_SCALE, MOVE_SCALE
-
-# Constants (tweak SCALEs later if you want)
+from RL1010.constants.state import BOARD_SIZE, PIECES_IN_HAND, SCORE_SCALE, MOVE_SCALE, MASK_SIZE
 
 STATE_DIM = BOARD_SIZE * BOARD_SIZE + PIECES_IN_HAND * MASK_SIZE * MASK_SIZE + 2
-# 100 + 3*25 + 2 = 177
-
 
 def piece_to_5x5_mask(piece: Dict[str, Any]) -> List[int]:
     """
