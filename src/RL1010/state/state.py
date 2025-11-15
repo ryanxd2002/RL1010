@@ -1,8 +1,13 @@
 # state_encoding.py
 from typing import List, Dict, Any
-from RL1010.constants.state import BOARD_SIZE, PIECES_IN_HAND, SCORE_SCALE, MOVE_SCALE, MASK_SIZE
+from RL1010.constants.state import (BOARD_SIZE,
+                                    PIECES_IN_HAND,
+                                    SCORE_SCALE,
+                                    MOVE_SCALE,
+                                    MASK_SIZE,
+                                    STATE_DIM )
 
-STATE_DIM = BOARD_SIZE * BOARD_SIZE + PIECES_IN_HAND * MASK_SIZE * MASK_SIZE + 2
+
 
 def piece_to_5x5_mask(piece: Dict[str, Any]) -> List[int]:
     """
@@ -11,7 +16,7 @@ def piece_to_5x5_mask(piece: Dict[str, Any]) -> List[int]:
     The original shape in pieces.py is a small 2D list of 0/1.
     We copy it into the top-left of a 5x5 grid and pad with zeros.
     """
-    shape = piece["shape"]          # e.g. [[1,1,1], [0,1,0], ...]
+    shape = piece["shape"]
     h = len(shape)
 
     mask_flat = [0] * (MASK_SIZE * MASK_SIZE)
